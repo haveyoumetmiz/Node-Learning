@@ -76,3 +76,13 @@ console.log('Addition:', math.add(5, 3));
 console.log('Subtraction:', math.subtract(5, 3));
 console.log('Multiplication:', math.multiply(5, 3));
 console.log('Division:', math.divide(5, 3));
+
+
+const lodash = require('lodash');
+const numbers = [1, 2, 3, 4, 5];
+const reversed = lodash.reverse([...numbers]);
+const shuffled = lodash.shuffle(numbers);
+
+console.log('Original:', numbers);
+console.log('Reversed:', reversed);
+console.log('Shuffled:', shuffled);
