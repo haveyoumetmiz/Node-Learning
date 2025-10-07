@@ -86,3 +86,58 @@ const shuffled = lodash.shuffle(numbers);
 console.log('Original:', numbers);
 console.log('Reversed:', reversed);
 console.log('Shuffled:', shuffled);
+
+const readableStream = fs.createReadStream('example.txt', { encoding: 'utf8'});
+
+readableStream.on('data', (chunk) => {
+    console.log('Received chunk:', chunk);
+});
+
+readableStream.on('end', () => {
+    console.log('Finished reading file.');
+});
+
+readableStream.on('error', (err) => {
+    console.error('Error reading file:', err);
+});
+
+
+const writeablestream = fs.createWriteStream('output2.txt');
+writeablestream.write('Hello, ');
+writeablestream.write('World!');
+writeablestream.end();
+
+writeablestream.on('finish', () => {
+    console.log('Finished writing to file.');
+});
+
+readableStream.pipe(writeablestream);
+
+writeablestream.on('finish', () => {
+    console.log('File Copied successfully using pipe.');
+});
+
+
+const readline = require('readline')
+const rl = readline.createInterface({input: readableStream})
+
+rl.on('line', (line) => {
+    console.log('Line:', line); 
+})
+
+rl.on('close', () => {
+    console.log('Finished reading lines.');
+});
+
+
+
+fs.mkdir('newDirectory', (err) => {
+    if (err) {
+        return console.error('Error creating directory:', err);
+    }
+    console.log('Directory created successfully.');
+
+})
+
+fs.mkdirSync('newDirectory2');
+console.log('Directory created successfully using mkdirSync.');
