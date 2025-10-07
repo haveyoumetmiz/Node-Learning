@@ -49,3 +49,30 @@ console.log('Architecture:', os.arch() );
 console.log('CPU Cores:', os.cpus().length );
 console.log('Total Memory:', os.totalmem());
 console.log('Free Memory:', os.freemem());
+
+
+const url = require('url');
+
+const myURL = new URL('https://www.example.com:8080/path/name?query=string#hash');
+console.log('Hostname:', myURL.host);
+console.log('pathname:', myURL.pathname);
+console.log('search params:', myURL.searchParams.get('query'));
+console.log('hash:', myURL.hash);
+console.log('href:', myURL.href);
+
+
+const crypto = require('crypto');
+
+const hash = crypto.createHash('sha256').update('Hello, World!').digest('hex');
+console.log('Hash:',hash);
+
+const sayHello = require('./greetings');
+const message = sayHello('Mizhab K Ansar');
+console.log(message);
+
+
+const math = require('./math');
+console.log('Addition:', math.add(5, 3));
+console.log('Subtraction:', math.subtract(5, 3));
+console.log('Multiplication:', math.multiply(5, 3));
+console.log('Division:', math.divide(5, 3));
